@@ -95,7 +95,7 @@ def get_sentiment(company_name):
 def load_models(stock_name):
     try:
         # Load models for specific stock
-        model_prefix = f"models/{stock_name.replace(' ', '_')}"
+        model_prefix = f"models/{stock_name.replace(' ', '_').replace("(", "").replace(")", "")}"
 
         # lstm_model = tf.keras.models.load_model(f"{model_prefix}_lstm.h5")
         lstm_model = tf.keras.models.load_model(
