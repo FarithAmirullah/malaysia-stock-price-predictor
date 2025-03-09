@@ -96,10 +96,17 @@ def load_models(stock_name):
     try:
         # Load models for specific stock
         model_prefix = f"models/{stock_name.replace(' ', '_')}"
-        lstm_model = tf.keras.models.load_model(f"{model_prefix}_lstm.h5")
-        xgb_model = joblib.load(f"{model_prefix}_xgb.pkl")
-        scaler_X = joblib.load(f"{model_prefix}_scaler_X.pkl")
-        scaler_y = joblib.load(f"{model_prefix}_scaler_y.pkl")
+        # lstm_model = tf.keras.models.load_model(f"{model_prefix}_lstm.h5")
+        lstm_model = tf.keras.models.load_model(
+            f"models/{model_prefix}_lstm.h5",
+            custom_objects={
+                'mse': tf.keras.losses.mean_squared_error,
+                'mae': tf.keras.metrics.mean_absolute_error
+            }
+        )
+        xgb_model = joblib.load(f"models/{model_prefix}_xgb.pkl")
+        scaler_X = joblib.load(f"models/{model_prefix}_scaler_X.pkl")
+        scaler_y = joblib.load(f"models/{model_prefix}_scaler_y.pkl")
         return lstm_model, xgb_model, scaler_X, scaler_y
     except Exception as e:
         st.error(f"Error loading models: {e}")
