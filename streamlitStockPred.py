@@ -100,8 +100,8 @@ def load_models(stock_name):
         lstm_model = tf.keras.models.load_model(
             f"{model_prefix}_lstm.h5",
             custom_objects={
-                'mse': tf.keras.losses.mean_squared_error,
-                'mae': tf.keras.metrics.mean_absolute_error
+                'mean_squared_error': tf.keras.losses.MeanSquaredError(),
+                'mean_absolute_error': tf.keras.metrics.MeanAbsoluteError()
             }
         )
         xgb_model = joblib.load(f"{model_prefix}_xgb.pkl")
