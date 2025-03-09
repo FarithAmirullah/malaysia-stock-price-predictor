@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+yfinance
+tensorflow
+xgboost
+vaderSentiment
+feedparser
+plotly
+scikit-learn
