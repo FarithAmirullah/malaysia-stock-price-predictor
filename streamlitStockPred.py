@@ -146,7 +146,7 @@ selected_stock = st.sidebar.selectbox("Select Stock", list(stocks.keys()))
 predict_button = st.sidebar.button("Generate Prediction")
 
 if predict_button:
-    with st.spinner('Crunching numbers... This may take a few minutes'):
+    with st.spinner('Crunching numbers... This may take a few seconds'):
         symbol = stocks[selected_stock]
 
         # Load models for selected stock
@@ -326,5 +326,5 @@ st.sidebar.markdown("""
 - Predictions are based on 5 years of historical data
 - News sentiment analysis from Google News RSS
 - Model combines LSTM and XGBoost predictions
-- Allow 1-2 minutes for prediction generation
+- Allow 5-10 seconds for prediction generation
 """)
