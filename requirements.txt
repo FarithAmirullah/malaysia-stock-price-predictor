@@ -8,3 +8,4 @@ vaderSentiment
 feedparser
 plotly
 scikit-learn
+joblib
