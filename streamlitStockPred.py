@@ -266,7 +266,7 @@ if predict_button:
         st.metric("Predicted Closing Price", f"RM{final_pred:.2f}", 
                  f"{percent_change:.2f}%")
     with col3:
-        st.metric("Market Sentiment", sentiment_category, 
+        st.metric("News Sentiment", sentiment_category, 
                  f"Score: {avg_sentiment:.2f}")
     
     st.subheader("Performance Metrics")
