@@ -70,7 +70,7 @@ stocks = {
 }
 
 # Function to fetch stock data
-@st.cache_data
+@st.cache_data(ttl=24*3600)
 def fetch_stock(symbol, start_date, end_date):
     try:
         df = yf.download(symbol, start=start_date, end=end_date)
