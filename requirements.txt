@@ -9,4 +9,4 @@ feedparser
 plotly
 scikit-learn
 joblib
-urllib
+urllib.parse
