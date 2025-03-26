@@ -14,6 +14,7 @@ import feedparser
 import xgboost as xgb
 import time
 import joblib
+import urllib.parse
 
 # Configure page
 st.set_page_config(
