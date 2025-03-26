@@ -57,18 +57,6 @@ def compute_rsi(data, window=14):
     loss = (-delta.where(delta < 0, 0)).rolling(window=window).mean()
     rs = gain / loss
     return 100 - (100 / (1 + rs))
-
-# # Function to fetch sentiment scores
-# def get_sentiment(company_name):
-#     analyzer = SentimentIntensityAnalyzer()
-#     try:
-#         feed = feedparser.parse(f"https://news.google.com/rss/search?q={company_name}")
-#         sentiments = [analyzer.polarity_scores(entry['title'])['compound'] for entry in feed.entries]
-#         avg_sentiment = np.mean(sentiments) if sentiments else 0
-#         sentiment_category = "Positive" if avg_sentiment > 0.05 else "Negative" if avg_sentiment < -0.05 else "Neutral"
-#         return avg_sentiment, sentiment_category
-#     except Exception:
-#         return 0, "Neutral"
     
 # Fetch Google News and analyze sentiment
 def get_google_news(company_name):
@@ -98,6 +86,7 @@ def load_models(stock_name):
         lstm_model = tf.keras.models.load_model(
             f"{model_prefix}_lstm.h5",
             custom_objects={
+                "mse": tf.keras.losses.MeanSquaredError(),
                 "mean_squared_error": tf.keras.losses.MeanSquaredError(),
                 "mean_absolute_error": tf.keras.metrics.MeanAbsoluteError()
             }
